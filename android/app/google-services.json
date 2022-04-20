@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "123052041495",
+    "project_id": "favorable-sylph-306619",
+    "storage_bucket": "favorable-sylph-306619.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123052041495:android:98f231a43415d2dce04352",
+        "android_client_info": {
+          "package_name": "com.example.mycalendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123052041495-6n1ll6adjcgt0tt5984tfklu0uljhrbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFTo1oXCcaXJUkrDZn81tLs0cPveAk_Ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123052041495-6n1ll6adjcgt0tt5984tfklu0uljhrbu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
