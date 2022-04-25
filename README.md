@@ -1,4 +1,4 @@
-#MyCalendarTasks
+# MyCalendarTasks
 A simple Android aplication for Tasks Management
 
 <!-- GETTING STARTED -->
