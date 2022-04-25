@@ -7,6 +7,7 @@ import 'package:mycalendar/app/modules/methods/days.dart';
 
 class Controller extends GetxController {
   ProjectRepository projectRepository;
+
   Controller({required this.projectRepository});
 
   //Global Key
@@ -18,15 +19,15 @@ class Controller extends GetxController {
   final taskFormKey = GlobalKey<FormState>();
   final taskEditCtrl = TextEditingController();
 
-  final pageIndex = 0.obs;
-  final iconIndex = 0.obs;
-  final colorIndex = 0.obs;
-  final chooseIndex = 0.obs;
-  final choosedIndex = [].obs;
+  var pageIndex = 0.obs;
+  var iconIndex = 0.obs;
+  var colorIndex = 0.obs;
+  var chooseIndex = 0.obs;
+  var choosedIndex = [].obs;
 
-  final projectViewZoom = true.obs;
+  var projectViewZoom = true.obs;
 
-  final deleting = false.obs;
+  var deleting = false.obs;
   var defaultProject = Project(
     title: 'ToDo',
     icon: Icons.create_new_folder_rounded,
@@ -34,26 +35,50 @@ class Controller extends GetxController {
     doingTasks: List.empty(growable: true),
     doneTasks: List.empty(growable: true),
   ).obs;
-  final projects = <Project>[].obs;
-  final projectsSize = <int>[].obs;
-  final projectsDone = <int>[].obs;
+  var projects = <Project>[].obs;
+  var projectsSize = <int>[].obs;
+  var projectsDone = <int>[].obs;
 
-  final allTasks = <dynamic>[].obs;
-  final Rx<Project?> project = Rx(null);
+  var allTasks = <dynamic>[].obs;
+  Rx<Project?> project = Rx(null);
 
-  final doingTasks = <dynamic>[].obs;
-  final doneTasks = <dynamic>[].obs;
+  var doingTasks = <dynamic>[].obs;
+  var doneTasks = <dynamic>[].obs;
+  String username = '1';
 
   @override
   void onInit() {
     super.onInit();
-    projects.assignAll(projectRepository.readProjects());
-    ever(projects, (_) => projectRepository.writeProjects(projects));
+    projects.assignAll(projectRepository.readProjects(username));
+    ever(projects, (_) => projectRepository.writeProjects(projects, username));
   }
 
   @override
   void onClose() {
     super.onClose();
+    projects = <Project>[].obs;
+    projectsSize = <int>[].obs;
+    projectsDone = <int>[].obs;
+
+    allTasks = <dynamic>[].obs;
+    project = Rx(null);
+
+    doingTasks = <dynamic>[].obs;
+    doneTasks = <dynamic>[].obs;
+    pageIndex = 0.obs;
+    iconIndex = 0.obs;
+    colorIndex = 0.obs;
+    chooseIndex = 0.obs;
+    choosedIndex = [].obs;
+
+    projectViewZoom = true.obs;
+
+    deleting = false.obs;
+  }
+
+  void init(String userName) {
+    username = userName;
+    onInit();
   }
 
 //Index
@@ -120,6 +145,19 @@ class Controller extends GetxController {
     }
 
     projects.refresh();
+  }
+
+  void editTask(Task oldTask, Task newTask) {
+    printInfo(info: 'error');
+    int index = allTasks.indexOf(oldTask);
+    allTasks[index] = newTask;
+    allTasks.refresh();
+    Project taskProject = oldTask.project;
+    index = taskProject.doingTasks.indexOf(oldTask);
+    taskProject.doingTasks[index] = newTask;
+    if (taskProject == project.value) {
+      updateTasksDoneDoing();
+    }
   }
 
   void changeTaskStatus(Task task, bool isDone) {

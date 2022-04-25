@@ -4,11 +4,13 @@ import 'package:mycalendar/app/models/task.dart';
 
 class ProjectRepository {
   ProjectProvider projectProvider;
-  ProjectRepository({required this.projectProvider});
+  String username;
+  ProjectRepository({required this.projectProvider, required this.username});
 
-  List<Project> readProjects() => projectProvider.readProjects();
-  void writeProjects(List<Project> projects) =>
-      projectProvider.writeProjects(projects);
+  List<Project> readProjects(String username) =>
+      projectProvider.readProjects(username);
+  void writeProjects(List<Project> projects, String username) =>
+      projectProvider.writeProjects(projects, username);
 }
 
 class TaskRepository {

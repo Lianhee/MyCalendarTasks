@@ -4,9 +4,9 @@ import 'package:mycalendar/app/core/utils/keys.dart';
 
 class StorageService extends GetxService {
   late GetStorage _box;
-  Future<StorageService> init() async {
+  Future<StorageService> init(String username) async {
     _box = GetStorage();
-    await _box.write(projectKey, []);
+    await _box.write(username + projectKey, []);
     return this;
   }
 

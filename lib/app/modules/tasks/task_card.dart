@@ -4,6 +4,7 @@ import 'package:mycalendar/app/core/values/icons.dart';
 import 'package:mycalendar/app/models/task.dart';
 import 'package:mycalendar/app/modules/controller.dart';
 import 'package:mycalendar/app/modules/methods/days.dart';
+import 'package:mycalendar/app/modules/tasks/edit_task.dart';
 
 // ignore: must_be_immutable
 class TaskCard extends StatelessWidget {
@@ -32,9 +33,6 @@ class TaskCard extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.only(top: 2),
         child: Container(
-            // constraints: const BoxConstraints(
-            //   maxHeight: 80,
-            // ),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(5)),
@@ -57,7 +55,26 @@ class TaskCard extends StatelessWidget {
                   child: const Icon(Icons.delete, color: Colors.white),
                 ),
                 child: InkWell(
-                  onDoubleTap: () async {},
+                  onTap: () async {
+                    await showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(15),
+                        ),
+                      ),
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: EditTask(task: task),
+                        ),
+                      ),
+                    );
+                    EditTask(task: task);
+                  },
                   child: Column(
                     children: [
                       Row(

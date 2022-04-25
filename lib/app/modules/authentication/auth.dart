@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mycalendar/main.dart';
 
 class Authentication {
   static Future<Pair> registerUsingEmailPassword({
@@ -47,6 +48,7 @@ class Authentication {
 
   static void logout() {
     FirebaseAuth.instance.signOut();
+    close();
   }
 
   static Future<User?> refreshUser(User user) async {

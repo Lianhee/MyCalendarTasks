@@ -5,7 +5,7 @@ import 'package:mycalendar/app/modules/authentication/auth.dart';
 import 'package:mycalendar/app/modules/authentication/login.dart';
 import 'package:mycalendar/app/modules/authentication/validator.dart';
 import 'package:mycalendar/app/modules/home/view.dart';
-import 'package:mycalendar/app/modules/welcome/welcome.dart';
+import 'package:mycalendar/main.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -142,6 +142,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                 password: _passwordController.text,
                               );
                               if (pair.left != null) {
+                                int end = _emailController.text.indexOf('@');
+                                String username =
+                                    _emailController.text.substring(0, end);
+                                printInfo(info: 'there is register $username');
+                                await init(username);
                                 Get.to(() => const HomePage());
                               } else {
                                 EasyLoading.showError(pair.right);

@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:mycalendar/app/modules/authentication/auth.dart';
 import 'package:mycalendar/app/modules/authentication/register.dart';
 import 'package:mycalendar/app/modules/authentication/validator.dart';
+import 'package:mycalendar/app/modules/controller.dart';
 import 'package:mycalendar/app/modules/home/view.dart';
-import 'package:mycalendar/app/modules/welcome/welcome.dart';
+import 'package:mycalendar/main.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -79,6 +80,15 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Email",
+                        errorBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: const BorderSide(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
                       controller: _emailController,
                       focusNode: _focusEmail,
                       validator: (value) =>
@@ -86,6 +96,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 8.0),
                     TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                        errorBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: const BorderSide(
+                            color: Colors.red,
+                          ),
+                        ),
+                      ),
                       controller: _passwordController,
                       focusNode: _focusPassword,
                       obscureText: true,
@@ -116,6 +135,12 @@ class _LoginPageState extends State<LoginPage> {
                             context: context,
                           );
                           if (pair.left != null) {
+                            int end = _emailController.text.indexOf('@');
+                            String username =
+                                _emailController.text.substring(0, end);
+                            printInfo(info: 'there is login $username');
+                            await init(username);
+
                             Get.to(() => const HomePage());
                           } else {
                             EasyLoading.showError(pair.right);

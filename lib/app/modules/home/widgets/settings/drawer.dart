@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mycalendar/app/modules/authentication/auth.dart';
-import 'package:mycalendar/app/modules/authentication/login.dart';
 import 'package:mycalendar/app/modules/authentication/profile.dart';
 import 'package:mycalendar/app/modules/controller.dart';
 import 'package:mycalendar/app/modules/projects/projects_view.dart';
 import 'package:mycalendar/app/modules/projects/view.dart';
 import 'package:mycalendar/app/modules/tasks/all_tasks.dart';
+import 'package:mycalendar/app/modules/welcome/welcome.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -58,24 +58,12 @@ class MenuPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        // _buildDrawerItem(
-                        //   icon: Icons.settings,
-                        //   text: 'Settings',
-                        //   onTap: () => {
-                        //     // Navigator.push(context,
-                        //     //     MaterialPageRoute(builder: (context) => const SettingsPage()))
-                        //   },
-                        // ),
-                        // const Spacer(),
                         _buildDrawerItem(
                           icon: Icons.exit_to_app_outlined,
                           text: "Logout",
                           onTap: () => {
                             Authentication.logout(),
-
-                            Get.to(() => const LoginPage()),
-                            // Navigator.push(context,
-                            //     MaterialPageRoute(builder: (context) => const LoginPage()))
+                            Get.to(() => const WelcomePage()),
                           },
                         ),
                       ],
