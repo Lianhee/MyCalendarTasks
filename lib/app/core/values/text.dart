@@ -1,4 +1,4 @@
-List<String> getpriorityTitle() {
+List<String> getPriorityTitle() {
   return [
     'Urgent & Important',
     'Not Urgent & Important',

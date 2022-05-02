@@ -109,7 +109,7 @@ class _StadisticsPageState extends State<StadisticsPage> {
                         sizes: sizes,
                         isEmpty: empty,
                         colors: getPriorityColors(),
-                        titles: getpriorityTitle(),
+                        titles: getPriorityTitle(),
                       ))))
               : const Padding(padding: EdgeInsets.zero),
           Padding(

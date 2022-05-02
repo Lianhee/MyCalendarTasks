@@ -34,8 +34,6 @@ class OpenDrawer extends StatelessWidget {
         ),
         const Spacer(),
         IconButton(
-//
-          //alignment: Alignment.centerRight,
           padding: EdgeInsets.zero,
           onPressed: () async {},
           icon: const Icon(

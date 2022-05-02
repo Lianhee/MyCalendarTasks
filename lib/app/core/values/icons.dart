@@ -1,63 +1,19 @@
 import 'package:flutter/material.dart';
 
 List<Icon> getIcons() {
-  //Default color
+  final icons = getIconsData();
   const color = Color.fromARGB(255, 104, 103, 172);
-  return const [
-    Icon(
-      Icons.home,
-      color: color,
-    ),
-    Icon(
-      Icons.person,
-      color: color,
-    ),
-    Icon(
-      Icons.menu_book_rounded,
-      color: color,
-    ),
-    Icon(
-      Icons.work,
-      color: color,
-    ),
-    Icon(
-      Icons.restaurant_menu_rounded,
-      color: color,
-    ),
-    Icon(
-      Icons.sports_tennis_rounded,
-      color: color,
-    ),
-    Icon(
-      Icons.shopping_cart_outlined,
-      color: color,
-    ),
-    Icon(
-      Icons.celebration,
-      color: color,
-    ),
-    Icon(
-      Icons.emoji_transportation,
-      color: color,
-    ),
-    Icon(
-      Icons.phone_iphone,
-      color: color,
-    ),
-    Icon(
-      Icons.account_balance_wallet,
-      color: color,
-    ),
-    Icon(
-      Icons.emoji_food_beverage_rounded,
-      color: color,
-    ),
+  return [
+    for (int i = 0; i < icons.length; i++)
+      Icon(
+        icons[i],
+        color: color,
+      ),
   ];
 }
 
 List<IconData> getIconsData() {
   return const [
-    Icons.star,
     Icons.home,
     Icons.person,
     Icons.menu_book_rounded,
@@ -70,6 +26,15 @@ List<IconData> getIconsData() {
     Icons.phone_iphone,
     Icons.account_balance_wallet,
     Icons.emoji_food_beverage_rounded,
+  ];
+}
+
+List<IconData> getPriorityIconsData() {
+  return [
+    Icons.looks_one,
+    Icons.looks_two,
+    Icons.looks_3,
+    Icons.looks_4,
   ];
 }
 

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/MyCalendarTasks/v17/Browse.VC.opendb
+/.vs/MyCalendarTasks/v17/Browse.VC.db-wal
+/.vs/MyCalendarTasks/v17/Browse.VC.db-shm
+/.vs/MyCalendarTasks/v17/Browse.VC.db
+/.vs

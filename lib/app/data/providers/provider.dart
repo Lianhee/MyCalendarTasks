@@ -8,15 +8,17 @@ class ProjectProvider {
   //var privada
   final StorageService _storageService = Get.find<StorageService>();
 
-  List<Project> readProjects() {
+  ProjectProvider();
+
+  List<Project> readProjects(String username) {
     var projects = <Project>[];
-    _storageService.read(projectKey).forEach((e) => projects.add(e));
+    _storageService.read(username + projectKey).forEach((e) => projects.add(e));
     return projects;
   }
 
-  void writeProjects(List<Project> projects) {
+  void writeProjects(List<Project> projects, String username) {
     _storageService.write(
-      projectKey,
+      username + projectKey,
       projects,
     );
   }

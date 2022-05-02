@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:mycalendar/app/core/values/colors.dart';
 import 'package:mycalendar/app/core/values/icons.dart';

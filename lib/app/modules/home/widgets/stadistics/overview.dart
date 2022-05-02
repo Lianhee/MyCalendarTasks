@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycalendar/app/core/values/colors.dart';
+import 'package:mycalendar/app/core/values/text.dart';
 import 'package:mycalendar/app/modules/controller.dart';
 import 'package:mycalendar/app/modules/stadistics/priority_stadistics.dart';
 import 'package:mycalendar/app/modules/stadistics/view.dart';
@@ -20,18 +22,8 @@ class _OverviewWindowState extends State<OverviewWindow> {
   int doneSize = 0;
   String text = '';
 
-  final List<Color> colors = [
-    Colors.red.shade200,
-    Colors.orange.shade200,
-    Colors.green.shade200,
-    Colors.blue.shade200
-  ];
-  final List<String> priorityTitle = [
-    'Urgent & Important',
-    'Not Urgent & Important',
-    'Urgent & Not Important',
-    'Not Urgent & Not Important',
-  ];
+  final List<Color> colors = getPriorityColors();
+  final List<String> priorityTitle = getPriorityTitle();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +51,7 @@ class _OverviewWindowState extends State<OverviewWindow> {
       if (doneSize == todoSize) {
         text = 'You have completed all tasks!!';
       } else {
-        text = 'Today you have done $doneSize of $todoSize tasks';
+        text = 'You can do it!!';
       }
     }
 

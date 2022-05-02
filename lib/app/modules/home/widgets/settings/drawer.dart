@@ -49,7 +49,7 @@ class MenuPage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: 10,
+                  vertical: 5,
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -72,7 +72,7 @@ class MenuPage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );
@@ -80,38 +80,46 @@ class MenuPage extends StatelessWidget {
 
   _listProjects() {
     final ctrl = Get.find<Controller>();
-    return SizedBox(child: Obx(() {
-      return Padding(
-        padding: const EdgeInsets.only(
-          left: 15,
+    return Container(
+        constraints: const BoxConstraints(
+          minHeight: 0.0,
+          maxHeight: 296,
         ),
-        child: Column(
-          children: [
-            ...ctrl.projects
-                .map((element) => SizedBox(
-                      height: 50,
-                      child: InkWell(
-                        onTap: () {
-                          ctrl.changeProject(element);
-                          Get.back();
-                          Get.to(() => const ProjectWindow());
-                        },
-                        child: Row(children: [
-                          Icon(
-                            element.icon,
-                            color: element.color,
+        child: Obx(() {
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 15,
+            ),
+            child: ListView(
+              children: [
+                ...ctrl.projects
+                    .map((element) => SizedBox(
+                          height: 50,
+                          child: InkWell(
+                            onTap: () {
+                              ctrl.changeProject(element);
+                              Get.back();
+                              Get.to(() => const ProjectWindow());
+                            },
+                            child: Row(children: [
+                              Icon(
+                                element.icon,
+                                color: element.color,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                element.title,
+                              )
+                            ]),
                           ),
-                          Text(
-                            element.title,
-                          )
-                        ]),
-                      ),
-                    ))
-                .toList(),
-          ],
-        ),
-      );
-    }));
+                        ))
+                    .toList(),
+              ],
+            ),
+          );
+        }));
   }
 }
 
@@ -199,7 +207,7 @@ Widget _buildDrawerItem(
     required GestureTapCallback onTap}) {
   return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 5,
         horizontal: 15,
       ),
       child: InkWell(

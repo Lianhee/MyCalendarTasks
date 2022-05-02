@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mycalendar/app/core/values/colors.dart';
+import 'package:mycalendar/app/core/values/icons.dart';
+import 'package:mycalendar/app/core/values/text.dart';
 import 'package:mycalendar/app/models/task.dart';
 import 'package:mycalendar/app/modules/controller.dart';
 import 'package:mycalendar/app/modules/home/widgets/settings/drawer.dart';
@@ -25,27 +28,9 @@ class _EisenhowerPageState extends State<EisenhowerPage> {
     Colors.green.shade100,
     Colors.blue.shade100
   ];
-
-  final List<Color> shadowColors = [
-    Colors.red.shade200,
-    Colors.orange.shade200,
-    Colors.green.shade200,
-    Colors.blue.shade200
-  ];
-
-  final List<IconData> priorityIcons = [
-    Icons.looks_one,
-    Icons.looks_two,
-    Icons.looks_3,
-    Icons.looks_4
-  ];
-
-  final List<String> priorityTitle = [
-    'Urgent & Important',
-    'Not Urgent & Important',
-    'Urgent & Not Important',
-    'Not Urgent & Not Important',
-  ];
+  final List<Color> shadowColors = getPriorityColors();
+  final List<IconData> priorityIcons = getPriorityIconsData();
+  final List<String> priorityTitle = getPriorityTitle();
 
   final DateTime now = DateTime.now();
 

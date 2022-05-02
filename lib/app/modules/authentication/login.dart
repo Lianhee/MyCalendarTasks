@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:mycalendar/app/modules/authentication/auth.dart';
 import 'package:mycalendar/app/modules/authentication/register.dart';
 import 'package:mycalendar/app/modules/authentication/validator.dart';
-import 'package:mycalendar/app/modules/controller.dart';
 import 'package:mycalendar/app/modules/home/view.dart';
 import 'package:mycalendar/main.dart';
 

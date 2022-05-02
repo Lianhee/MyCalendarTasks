@@ -317,6 +317,9 @@ class _NewTaskState extends State<NewTask> {
   // Priority
 
   _selectPriority(Project? project) {
+    final icons = getPriorityIconsData();
+    final titles = getPriorityText();
+    final colors = getPriorityColors();
     return Container(
       decoration: BoxDecoration(
         color: (setPriority) ? priorityColor().withOpacity(0.5) : null,
@@ -334,58 +337,20 @@ class _NewTaskState extends State<NewTask> {
             ),
             builder: (context) => SingleChildScrollView(
               child: Wrap(children: [
-                ListTile(
-                    leading: Icon(
-                      Icons.looks_one_rounded,
-                      color: Colors.red.shade200,
-                    ),
-                    title: const Text('Urgent & Important'),
-                    onTap: () async {
-                      Get.back();
-                      setState(() {
-                        setPriority = true;
-                        priority = 0;
-                      });
-                    }),
-                ListTile(
-                    leading: Icon(
-                      Icons.looks_two_rounded,
-                      color: Colors.orange.shade200,
-                    ),
-                    title: const Text('Not Urgent & Important'),
-                    onTap: () async {
-                      Get.back();
-                      setState(() {
-                        setPriority = true;
-                        priority = 1;
-                      });
-                    }),
-                ListTile(
-                    leading: Icon(
-                      Icons.looks_3_rounded,
-                      color: Colors.green.shade200,
-                    ),
-                    title: const Text('Urgent & Not Important'),
-                    onTap: () async {
-                      Get.back();
-                      setState(() {
-                        setPriority = true;
-                        priority = 2;
-                      });
-                    }),
-                ListTile(
-                    leading: Icon(
-                      Icons.looks_4_rounded,
-                      color: Colors.blue.shade200,
-                    ),
-                    title: const Text('Not Urgent & Not Important'),
-                    onTap: () async {
-                      Get.back();
-                      setState(() {
-                        setPriority = true;
-                        priority = 3;
-                      });
-                    }),
+                for (int i = 0; i < 4; i++)
+                  ListTile(
+                      leading: Icon(
+                        icons[i],
+                        color: colors[i],
+                      ),
+                      title: Text(titles[i]),
+                      onTap: () async {
+                        Get.back();
+                        setState(() {
+                          setPriority = true;
+                          priority = i;
+                        });
+                      }),
               ]),
             ),
           );

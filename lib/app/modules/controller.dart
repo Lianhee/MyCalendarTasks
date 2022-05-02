@@ -81,11 +81,6 @@ class Controller extends GetxController {
     onInit();
   }
 
-//Index
-  void changeIconIndex(int value) {
-    iconIndex.value = value;
-  }
-
   void changeDeleting(bool value) {
     deleting.value = value;
   }
